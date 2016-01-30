@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    
+    <!-- 登录-->
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>com.huangyuanlove.dao.Login</servlet-class>
@@ -13,4 +13,27 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/login.do</url-pattern>
     </servlet-mapping>
+
+    <!-- 注册 -->
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>com.huangyuanlove.dao.Register</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/regiser.do</url-pattern>
+    </servlet-mapping>
+
+
+    <!-- 修改密码 -->
+    <servlet>
+        <servlet-name>ModifyPassowrd</servlet-name>
+        <servlet-class>com.huangyuanlove.dao.ModifyPassword</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ModifyPassowrd</servlet-name>
+        <url-pattern>/modifypassword.do</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>

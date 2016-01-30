@@ -22,20 +22,24 @@ public class Login extends HttpServlet {
 
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DBObject next;
-        boolean success = false;
+
+        System.out.println("------以下为登录服务的输出------");
+
         DBCollection userCollection = MongoUtils.getDBCollection("user", "user");
-        String userID = request.getParameter("userid");
+        String userid = request.getParameter("userid");
         String userPassword = request.getParameter("password");
-        System.out.println(userID);
+        System.out.println(userid);
         System.out.println(userPassword);
         DBCursor cursor = userCollection.find(new BasicDBObject()
-                .append("userid",userID)
+                .append("userid",userid)
                 .append("password",userPassword));
 
         if(cursor.hasNext()){
             response.getWriter().write(cursor.next().toString());
+            System.out.println(cursor.next().toString());
         }
+
+        System.out.println("------登录服务输出完毕------");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

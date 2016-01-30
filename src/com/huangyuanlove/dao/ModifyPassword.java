@@ -20,39 +20,50 @@ import java.util.UUID;
 @WebServlet(name = "ModifyPassword")
 public class ModifyPassword extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("------以下为修改密码服务的输出------");
         DBCollection userCollection = MongoUtils.getDBCollection("user", "user");
-        String userID = request.getParameter("userID");
+        String userid = request.getParameter("userid");
         String oldPassword = request.getParameter("oldPassword");
         String newPassword = request.getParameter("newPassword");
         String uuid = request.getParameter("uuid");
+        String record = request.getParameter("record");
+
+        System.out.println("userid:"+userid);
+        System.out.println("oldPassword:"+oldPassword);
+        System.out.println("newPassword:"+newPassword);
+        System.out.println("uuid:"+uuid);
+        System.out.println("record:"+record);
+
         DBCursor cursor = userCollection.find(new BasicDBObject()
-                .append("userID", userID)
+                .append("userid", userid)
                 .append("password", oldPassword)
                 .append("uuid", uuid));
 
         if (cursor.hasNext()) {
             userCollection.update(
+                    cursor.next(),
                     new BasicDBObject()
-                            .append("userID", userID)
-                            .append("password", oldPassword)
-                            .append("uuid", uuid),
-                    new BasicDBObject()
-                            .append("userID", userID)
-                            .append("password", oldPassword)
-                            .append("uuid", UUID.randomUUID()+"")
+                            .append("userid", userid)
+                            .append("password", newPassword)
+                            .append("uuid", UUID.randomUUID() + "")
+                            .append("record", record)
             );
+            System.out.println("密码修改成功");
+
+            cursor = userCollection.find(
+                    new BasicDBObject()
+                            .append("userid", userid)
+                            .append("password", newPassword));
+            System.out.println("共有" + cursor.count() + "个");
+
+            if (cursor.hasNext()) {
+                DBObject next = cursor.next();
+                System.out.println(next.toString());
+                response.getWriter().write(next.toString());
+            }
         }
 
-        cursor = userCollection.find();
-        if(cursor.hasNext())
-        {
-            DBObject next = cursor.next();
-            System.out.println(next.get("userID"));
-            System.out.println(next.get("password"));
-            System.out.println(next.get("uuid"));
-        }
-
-
+        System.out.println("------修改密码服务输出完毕------");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
