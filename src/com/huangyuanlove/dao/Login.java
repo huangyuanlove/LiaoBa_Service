@@ -36,7 +36,6 @@ public class Login extends HttpServlet {
 
         if(cursor.hasNext()){
             response.getWriter().write(cursor.next().toString());
-            System.out.println(cursor.next().toString());
         }
 
         System.out.println("------登录服务输出完毕------");
