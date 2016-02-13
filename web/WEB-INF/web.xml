@@ -36,4 +36,13 @@
     </servlet-mapping>
 
 
+    <!-- 聊天记录 -->
+    <servlet>
+        <servlet-name>ChatLog</servlet-name>
+        <servlet-class>com.huangyuanlove.dao.ChatLog</servlet-class>
+    </servlet>
+<servlet-mapping>
+    <servlet-name>ChatLog</servlet-name>
+    <url-pattern>/chatlog.do</url-pattern>
+</servlet-mapping>
 </web-app>
