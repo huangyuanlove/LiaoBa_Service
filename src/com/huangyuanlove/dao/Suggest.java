@@ -1,6 +1,5 @@
 package com.huangyuanlove.dao;
 
-import com.huangyuanlove.util.MongoUtils;
 import com.mongodb.*;
 
 import javax.servlet.ServletException;
@@ -11,28 +10,26 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 /**
- * Created by huangyuan on 16-2-13.
+ * Created by huangyuan on 16-3-8.
  */
-@WebServlet(name = "ChatLog")
-public class ChatLog extends HttpServlet {
-
-
-
+@WebServlet(name = "Suggest")
+public class Suggest extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        System.out.println("------以下为聊天记录服务的输出------");
+        System.out.println("-------以下为意见反馈服务的输出-------");
 
         String userid = request.getParameter("userid");
+        String time = request.getParameter("time");
         String content = request.getParameter("content");
         Mongo mongo = new Mongo();
         DB mongoDB = mongo.getDB("user");
+        DBCollection suggestCollection =mongoDB.getCollection("suggest");
+        DBObject suggest = new BasicDBObject().append("userid",userid)
+                .append("time",time)
+                .append("content",content);
+        suggestCollection.insert(suggest);
+        System.out.println("-------意见反馈服务的输出------");
 
-        DBCollection chatCollection =mongoDB.getCollection("chat");
-        DBObject chatLog = new BasicDBObject().append("userid",userid).append("content",content);
-        chatCollection.insert(chatLog);
-
-        System.out.println(chatLog.toString());
-        System.out.println("------聊天记录服务的输出完毕------");
 
     }
 
