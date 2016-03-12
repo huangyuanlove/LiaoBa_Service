@@ -21,6 +21,8 @@ import java.util.UUID;
 public class ModifyPassword extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("------以下为修改密码服务的输出------");
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         DBCollection userCollection = MongoUtils.getDBCollection("user", "user");
         String userid = request.getParameter("userid");
         String oldPassword = request.getParameter("oldPassword");

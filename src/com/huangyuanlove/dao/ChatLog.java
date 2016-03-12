@@ -21,6 +21,8 @@ public class ChatLog extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         System.out.println("------以下为聊天记录服务的输出------");
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
 
         String userid = request.getParameter("userid");
         String content = request.getParameter("content");

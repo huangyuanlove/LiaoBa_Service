@@ -23,6 +23,8 @@ public class Register extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("------以下为注册服务的输出------");
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         DBCollection userCollection = MongoUtils.getDBCollection("user", "user");
         String userid = request.getParameter("userid");
         String userPassword = request.getParameter("password");

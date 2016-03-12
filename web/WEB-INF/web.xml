@@ -56,4 +56,16 @@
         <servlet-name>Suggest</servlet-name>
         <url-pattern>/suggest.do</url-pattern>
     </servlet-mapping>
+
+    <!-- 软件更新 -->
+    <servlet>
+        <servlet-name>Updata</servlet-name>
+        <servlet-class>com.huangyuanlove.dao.Updata</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Updata</servlet-name>
+        <url-pattern>/updata.do</url-pattern>
+    </servlet-mapping>
+
+
 </web-app>

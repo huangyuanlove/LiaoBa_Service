@@ -17,7 +17,8 @@ public class Suggest extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         System.out.println("-------以下为意见反馈服务的输出-------");
-
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         String userid = request.getParameter("userid");
         String time = request.getParameter("time");
         String content = request.getParameter("content");

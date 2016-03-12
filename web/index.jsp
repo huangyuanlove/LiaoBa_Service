@@ -12,10 +12,10 @@
     <title>mongoTest</title>
   </head>
   <body>
-<form method="get" action="${pageContext.request.contextPath}/login.do">
-  <input type="text" value="huangyuan" name="userid">
+<form method="get" action="${pageContext.request.contextPath}/updata.do">
+  <input type="text" value="更新" name="version">
   <input type="text" value="amw" name="password">
-  <input type="submit" value="测试">
+  <input type="submit" value="提交">
 </form>
   </body>
 </html>

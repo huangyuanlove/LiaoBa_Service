@@ -24,7 +24,8 @@ public class Login extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         System.out.println("------以下为登录服务的输出------");
-
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         DBCollection userCollection = MongoUtils.getDBCollection("user", "user");
         String userid = request.getParameter("userid");
         String userPassword = request.getParameter("password");
