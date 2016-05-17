@@ -29,7 +29,6 @@ public class Updata extends HttpServlet {
         if(updataCursor.hasNext())
         {
             DBObject updataObj = updataCursor.next();
-            System.out.println(updataObj.toString());
             if(!version.equals(updataObj.get("version").toString()))
             {
                 responseString = updataObj.toString();

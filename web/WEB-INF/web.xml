@@ -41,17 +41,17 @@
         <servlet-name>ChatLog</servlet-name>
         <servlet-class>com.huangyuanlove.dao.ChatLog</servlet-class>
     </servlet>
-<servlet-mapping>
-    <servlet-name>ChatLog</servlet-name>
-    <url-pattern>/chatlog.do</url-pattern>
-</servlet-mapping>
-    
-    
+    <servlet-mapping>
+        <servlet-name>ChatLog</servlet-name>
+        <url-pattern>/chatlog.do</url-pattern>
+    </servlet-mapping>
+
+
     <!-- 意见反馈 -->
-         <servlet>
-             <servlet-name>Suggest</servlet-name>
-            <servlet-class>com.huangyuanlove.dao.Suggest</servlet-class>
-         </servlet>
+    <servlet>
+        <servlet-name>Suggest</servlet-name>
+        <servlet-class>com.huangyuanlove.dao.Suggest</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Suggest</servlet-name>
         <url-pattern>/suggest.do</url-pattern>
@@ -67,5 +67,15 @@
         <url-pattern>/updata.do</url-pattern>
     </servlet-mapping>
 
+
+    <!-- 获取所有用户 -->
+    <servlet>
+        <servlet-name>ListAll</servlet-name>
+        <servlet-class>com.huangyuanlove.dao.ListAllUser</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ListAll</servlet-name>
+        <url-pattern>/listall.do</url-pattern>
+    </servlet-mapping>
 
 </web-app>

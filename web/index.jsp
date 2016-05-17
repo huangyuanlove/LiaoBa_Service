@@ -1,21 +1,36 @@
 <%@ page import="com.mongodb.Mongo" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: huangyuan
-  Date: 16-1-24
-  Time: 上午12:14
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
   <head>
-    <title>mongoTest</title>
+    <title>管理界面</title>
   </head>
   <body>
-<form method="get" action="${pageContext.request.contextPath}/updata.do">
-  <input type="text" value="更新" name="version">
-  <input type="text" value="amw" name="password">
-  <input type="submit" value="提交">
-</form>
+<c:forEach var="user" items="${userlist}"></c:forEach>
+
+<table border="1px">
+  <tr>
+    <th>用户id</th>
+    <th>UUID</th>
+    <th>密码</th>
+    <th>通关记录</th>
+    <th>操作</th>
+  </tr>
+
+  <c:forEach var="user" items="${userlist}">
+    <tr>
+
+      <td>${user.userid}</td>
+      <td> ${user.UUID}</td>
+      <td> ${user.password}</td>
+      <td> ${user.record}</td>
+    </tr>
+  </c:forEach>
+</table>
+
+
+
   </body>
 </html>
