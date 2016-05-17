@@ -1,5 +1,6 @@
 package com.huangyuanlove.dao;
 
+import com.huangyuanlove.util.MD5Utils;
 import com.huangyuanlove.util.MongoUtils;
 import com.mongodb.BasicDBObject;
 import com.mongodb.DBCollection;
@@ -28,9 +29,10 @@ public class Register extends HttpServlet {
         DBCollection userCollection = MongoUtils.getDBCollection("user", "user");
         String userid = request.getParameter("userid");
         String userPassword = request.getParameter("password");
+        String md5Password = MD5Utils.MD5(userPassword);
         DBObject userBean = new BasicDBObject()
                 .append("userid", userid)
-                .append("password",userPassword)
+                .append("password",md5Password)
                 .append("uuid", UUID.randomUUID() + "")
                 .append("record", "0");
 
