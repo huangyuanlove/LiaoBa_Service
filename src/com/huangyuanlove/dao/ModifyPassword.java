@@ -31,11 +31,9 @@ public class ModifyPassword extends HttpServlet {
         String uuid = request.getParameter("uuid");
         String record = request.getParameter("record");
 
-
-
         DBCursor cursor = userCollection.find(new BasicDBObject()
                 .append("userid", userid)
-                .append("password", oldPassword)
+                .append("password", MD5Utils.MD5(oldPassword))
                 .append("uuid", uuid));
 
         if (cursor.hasNext()) {

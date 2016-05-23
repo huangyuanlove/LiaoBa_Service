@@ -24,13 +24,13 @@ public class ChatLog extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
 
-        String userid = request.getParameter("userid");
+        String userid = request.getParameter("uuid");
         String content = request.getParameter("content");
         Mongo mongo = new Mongo();
         DB mongoDB = mongo.getDB("user");
 
         DBCollection chatCollection =mongoDB.getCollection("chat");
-        DBObject chatLog = new BasicDBObject().append("userid",userid).append("content",content);
+        DBObject chatLog = new BasicDBObject().append("UUID",userid).append("content",content);
         chatCollection.insert(chatLog);
 
         System.out.println(chatLog.toString());

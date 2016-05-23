@@ -1,4 +1,4 @@
-<%@ page import="com.mongodb.Mongo" %>
+
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -26,8 +26,8 @@
       <td> ${user.UUID}</td>
       <td> ${user.password}</td>
       <td> ${user.record}</td>
-      <td> <a href="${pageContext.request.contextPath}/delete.do?userid=${user.userid}">删除</a>
-      <a href="${pageContext.request.contextPath}/resetpsw.do?userid=${user.userid}">重置密码</a>
+      <td> <a href="${pageContext.request.contextPath}/delete.do?uuid=${user.UUID}">删除</a>
+      <a href="${pageContext.request.contextPath}/resetpsw.do?uuid=${user.UUID}">重置密码</a>
       </td>
     </tr>
   </c:forEach>

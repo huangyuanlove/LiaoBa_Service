@@ -26,9 +26,9 @@ public class DeleteUser extends HttpServlet {
         System.out.println("------以下为删除用户服务的输出------");
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
-        String userid = request.getParameter("userid");
+        String uuid = request.getParameter("uuid");
         DBCollection userCollection = MongoUtils.getDBCollection("user", "user");
-        userCollection.findAndRemove(new BasicDBObject().append("userid", userid));
+        userCollection.findAndRemove(new BasicDBObject().append("uuid", uuid));
         response.sendRedirect("/LiaoBa/listall.do");
 //        request.getRequestDispatcher("/listall.do").forward(request,response);
 

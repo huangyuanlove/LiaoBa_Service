@@ -78,7 +78,7 @@
         <url-pattern>/listall.do</url-pattern>
     </servlet-mapping>
 
-    
+
     <!-- 删除用户-->
     <servlet>
         <servlet-name>DeleteUser</servlet-name>
@@ -109,7 +109,7 @@
         <url-pattern>/updatarecord.do</url-pattern>
     </servlet-mapping>
     
-    <!-- 根据记录排序 -->
+<!-- 按记录排序 -->
     <servlet>
         <servlet-name>SortByRecord</servlet-name>
         <servlet-class>com.huangyuanlove.dao.SortByRecord</servlet-class>

@@ -23,13 +23,13 @@ public class ResetPassword extends HttpServlet {
         System.out.println("------以下为重置密码服务的输出------");
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
-        String userid = request.getParameter("userid");
+        String uuid = request.getParameter("uuid");
         DBCollection userCollection = MongoUtils.getDBCollection("user", "user");
-        DBObject dbObject = userCollection.findOne(new BasicDBObject().append("userid", userid));
+        DBObject dbObject = userCollection.findOne(new BasicDBObject().append("uuid", uuid));
+
         dbObject.put("password","670B14728AD9902AECBA32E22FA4F6BD");
-        userCollection.findAndModify(new BasicDBObject().append("userid", userid), dbObject);
+        userCollection.findAndModify(new BasicDBObject().append("uuid", uuid), dbObject);
         response.sendRedirect("/LiaoBa/listall.do");
-//        request.getRequestDispatcher("/listall.do").forward(request,response);
         System.out.println("------重置密码服务的输出完毕------");
     }
 

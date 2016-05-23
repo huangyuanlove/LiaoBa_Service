@@ -5,15 +5,15 @@ package com.huangyuanlove.bean;
  */
 public class ChatLogBean {
 
-    private String userid;
+    private String UUID;
     private String content;
 
     public String getUserid() {
-        return userid;
+        return UUID;
     }
 
-    public void setUserid(String userid) {
-        this.userid = userid;
+    public void setUserid(String UUID) {
+        this.UUID = UUID;
     }
 
     public String getContent() {
@@ -28,7 +28,7 @@ public class ChatLogBean {
     @Override
     public String toString() {
         return "ChatLogBean{" +
-                "userid='" + userid + '\'' +
+                "UUID='" + UUID + '\'' +
                 ", content='" + content + '\'' +
                 '}';
     }

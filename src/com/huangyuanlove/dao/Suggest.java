@@ -19,13 +19,13 @@ public class Suggest extends HttpServlet {
         System.out.println("-------以下为意见反馈服务的输出-------");
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
-        String userid = request.getParameter("userid");
+        String uuid = request.getParameter("uuid");
         String time = request.getParameter("time");
         String content = request.getParameter("content");
         Mongo mongo = new Mongo();
         DB mongoDB = mongo.getDB("user");
         DBCollection suggestCollection =mongoDB.getCollection("suggest");
-        DBObject suggest = new BasicDBObject().append("userid",userid)
+        DBObject suggest = new BasicDBObject().append("userid",uuid)
                 .append("time",time)
                 .append("content",content);
         suggestCollection.insert(suggest);

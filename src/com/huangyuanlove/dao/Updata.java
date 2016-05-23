@@ -16,7 +16,7 @@ import java.io.IOException;
 public class Updata extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("------以下为软件更新的输出------");
-//        request.setCharacterEncoding("utf-8");
+        request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         String version = request.getParameter("version");
         String responseString = "";
@@ -37,6 +37,7 @@ public class Updata extends HttpServlet {
                 responseString = "";
             }
         }
+        System.out.println("返回客户端的数据："+responseString);
         response.getWriter().write(responseString);
         System.out.println("------软件更新的输出完毕------");
 

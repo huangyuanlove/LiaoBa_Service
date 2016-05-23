@@ -21,12 +21,12 @@ public class UpdataRecord extends HttpServlet {
         System.out.println("------以下为上传记录服务的输出------");
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
-        String userid = request.getParameter("userid");
-        int record = Integer.valueOf(request.getParameter("record"));
+        String uuid = request.getParameter("uuid");
+        double record = Double.valueOf(request.getParameter("record"));
         DBCollection userCollection = MongoUtils.getDBCollection("user", "user");
-        DBObject dbObject = userCollection.findOne(new BasicDBObject().append("userid", userid));
+        DBObject dbObject = userCollection.findOne(new BasicDBObject().append("uuid", uuid));
         dbObject.put("record",record);
-        userCollection.findAndModify(new BasicDBObject().append("userid", userid), dbObject);
+        userCollection.findAndModify(new BasicDBObject().append("uuid", uuid), dbObject);
         response.getWriter().write("ok");
 //        request.getRequestDispatcher("/listall.do").forward(request,response);
         System.out.println("------上传记录服务的输出完毕------");
