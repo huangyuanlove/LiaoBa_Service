@@ -29,7 +29,7 @@ public class ModifyPassword extends HttpServlet {
         String oldPassword = request.getParameter("oldPassword");
         String newPassword = request.getParameter("newPassword");
         String uuid = request.getParameter("uuid");
-        String record = request.getParameter("record");
+        double record = Double.valueOf(request.getParameter("record"));
 
         DBCursor cursor = userCollection.find(new BasicDBObject()
                 .append("userid", userid)
@@ -50,7 +50,7 @@ public class ModifyPassword extends HttpServlet {
             cursor = userCollection.find(
                     new BasicDBObject()
                             .append("userid", userid)
-                            .append("password", newPassword));
+                            .append("password", MD5Utils.MD5(newPassword)));
             System.out.println("共有" + cursor.count() + "个");
 
             if (cursor.hasNext()) {

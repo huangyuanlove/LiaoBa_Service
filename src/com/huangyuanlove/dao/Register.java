@@ -34,7 +34,7 @@ public class Register extends HttpServlet {
                 .append("userid", userid)
                 .append("password",md5Password)
                 .append("uuid", UUID.randomUUID() + "")
-                .append("record", 0);
+                .append("record", 0.0);
 
 
         DBCursor cursor = userCollection.find(new BasicDBObject().append("userid", userid));
