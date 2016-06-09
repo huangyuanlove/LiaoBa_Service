@@ -17,20 +17,23 @@ import java.io.IOException;
 public class ChatLog extends HttpServlet {
 
 
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         System.out.println("------以下为聊天记录服务的输出------");
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
 
-        String userid = request.getParameter("uuid");
+        String userid = request.getParameter("userid");
+        String uuid = request.getParameter("uuid");
         String content = request.getParameter("content");
         Mongo mongo = new Mongo();
         DB mongoDB = mongo.getDB("user");
 
-        DBCollection chatCollection =mongoDB.getCollection("chat");
-        DBObject chatLog = new BasicDBObject().append("UUID",userid).append("content",content);
+        DBCollection chatCollection = mongoDB.getCollection("chat");
+        DBObject chatLog = new BasicDBObject().append("uuid", uuid).
+                append("userid",userid).
+                append("content", content)
+                ;
         chatCollection.insert(chatLog);
 
         System.out.println(chatLog.toString());
@@ -39,6 +42,6 @@ public class ChatLog extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request,response);
+        doPost(request, response);
     }
 }

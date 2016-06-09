@@ -20,12 +20,14 @@ public class Suggest extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         String uuid = request.getParameter("uuid");
+        String userid = request.getParameter("userid");
         String time = request.getParameter("time");
         String content = request.getParameter("content");
         Mongo mongo = new Mongo();
         DB mongoDB = mongo.getDB("user");
         DBCollection suggestCollection =mongoDB.getCollection("suggest");
-        DBObject suggest = new BasicDBObject().append("userid",uuid)
+        DBObject suggest = new BasicDBObject().append("uuid",uuid)
+                .append("userid",userid)
                 .append("time",time)
                 .append("content",content);
         suggestCollection.insert(suggest);
