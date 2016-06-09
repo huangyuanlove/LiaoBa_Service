@@ -42,7 +42,7 @@ public class SortByRecord extends HttpServlet {
             users.add(user);
         }
             request.setAttribute("userlist", users);
-            request.getRequestDispatcher("/index.jsp").forward(request, response);
+            request.getRequestDispatcher("/show_user_info.jsp").forward(request, response);
         }
         else
         {

@@ -4,6 +4,15 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
+    <error-page>
+        <error-code>404</error-code>
+        <location>/pages-404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/pages-500.jsp</location>
+    </error-page>
+    
     <!-- 登录-->
     <servlet>
         <servlet-name>Login</servlet-name>
@@ -118,4 +127,36 @@
         <servlet-name>SortByRecord</servlet-name>
         <url-pattern>/sort.do</url-pattern>
     </servlet-mapping>
+    
+    <!-- 管理员登录 -->
+    <servlet>
+        <servlet-name>AdminLogin</servlet-name>
+        <servlet-class>com.huangyuanlove.dao.AdminLogIn</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AdminLogin</servlet-name>
+        <url-pattern>/admin_login.do</url-pattern>
+    </servlet-mapping>
+
+
+   <!-- 查看聊天记录 -->
+    <servlet>
+        <servlet-name>GetAllChatLog</servlet-name>
+        <servlet-class>com.huangyuanlove.dao.GetAllChatLog</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetAllChatLog</servlet-name>
+        <url-pattern>/get_all_chat_log.do</url-pattern>
+    </servlet-mapping>
+
+    <!-- 查看反馈意见 -->
+    <servlet>
+        <servlet-name>GetAllSuggest</servlet-name>
+        <servlet-class>com.huangyuanlove.dao.GetAllSuggest</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetAllSuggest</servlet-name>
+        <url-pattern>/get_all_suggest.do</url-pattern>
+    </servlet-mapping>
+
 </web-app>

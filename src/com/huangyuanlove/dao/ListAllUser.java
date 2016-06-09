@@ -46,7 +46,7 @@ public class ListAllUser extends HttpServlet {
 
         System.out.println("------列出所有用户服务的输出完毕------");
         request.setAttribute("userlist",users);
-        request.getRequestDispatcher("/index.jsp").forward(request,response);
+        request.getRequestDispatcher("/tables-basic-info.jsp").forward(request,response);
 
     }
 }
